@@ -1,0 +1,47 @@
+[
+  {
+    "category": "DataPlaneRequests",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "enabled": false,
+      "days": 0
+    }
+  },
+  {
+    "category": "QueryRuntimeStatistics",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "enabled": false,
+      "days": 0
+    }
+  },
+  {
+    "category": "PartitionKeyStatistics",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "enabled": false,
+      "days": 0
+    }
+  },
+  {
+    "category": "PartitionKeyRUConsumption",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "enabled": false,
+      "days": 0
+    }
+  },
+  {
+    "category": "ControlPlaneRequests",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "enabled": false,
+      "days": 0
+    }
+  }
+]

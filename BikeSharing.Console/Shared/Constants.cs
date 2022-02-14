@@ -8,7 +8,9 @@ public static class Constants
 
     public const int MaxNumberOfBikes = 4000;
 
-    public const int MaxNumberOfRents = 40000;
+    public const int MaxNumberOfRentals = 40000;
+
+    public const int MaxNumberOfClients = 200000;
     
     // 0.1 long&lat = 11km = +/- warsaw radius
     public const double MaxLongLatRadius = 0.1;
@@ -19,6 +21,10 @@ public static class Constants
     public static double GetRatioForCity(int cityIndex) => 1 - (cityIndex * LoweringDiscriminator);
 
     public static int GetNumberOfBikesForCity(int cityIndex) => (int) (GetRatioForCity(cityIndex) * MaxNumberOfBikes);
+    
+    public static int GetNumberOfRentalsForCity(int cityIndex) => (int) (GetRatioForCity(cityIndex) * MaxNumberOfRentals);
+    
+    public static int GetNumberOfClientsForCity(int cityIndex) => (int) (GetRatioForCity(cityIndex) * MaxNumberOfClients);
     
     public static double GetLongLatRadiusForCity(int cityIndex) => GetRatioForCity(cityIndex) * MaxLongLatRadius;
 }

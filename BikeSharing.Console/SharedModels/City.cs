@@ -13,4 +13,5 @@ public class City
     public string Name { get; set; }
 
     public List<Station> Stations { get; set; } = new List<Station>();
+    public List<Bike> Bikes { get; set; } = new List<Bike>();
 }
