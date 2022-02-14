@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BikeSharing.Console.Case1;
+namespace BikeSharing.Console.Models.Shared.Case1;
 
 public class Reservation
 {

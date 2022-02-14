@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Cosmos.Spatial;
+﻿using BikeSharing.Console.SharedModels;
 using Newtonsoft.Json;
 
-namespace BikeSharing.Console;
+namespace BikeSharing.Console.Shared;
 
 public class StaticLists
 {

@@ -1,5 +1,6 @@
-﻿using System.ComponentModel;
-using Microsoft.Azure.Cosmos.Spatial;
+﻿using Microsoft.Azure.Cosmos.Spatial;
+
+namespace BikeSharing.Console.SharedModels;
 
 public class City
 {

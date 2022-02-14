@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using BikeSharing.Console.Shared;
+using Microsoft.Azure.Cosmos;
 
 namespace BikeSharing.Console.Case1;
 using static System.Linq.Enumerable;
@@ -25,7 +26,7 @@ public static class CosmosScripts
             {
                 var bikeType = bikeIndex % 30 == 0
                     ? BikeType.Electrical
-                    : BikeType.Traditional;
+                    : BikeType.Regular;
                 
                 var bike = new Bike()
                 {
@@ -36,7 +37,7 @@ public static class CosmosScripts
                 };
 
                 // free-standing bike - every 1 of 20
-                if (bikeIndex % 20 == 0)
+                if (bikeIndex % 10 == 0)
                 {
                     bike.Location = random.GeneratePoint(
                         cityIndex, 
@@ -73,7 +74,7 @@ public static class CosmosScripts
                 {
                     if (!batchResponse.IsSuccessStatusCode)
                     {
-                        System.Console.WriteLine("Nieudało się");
+                        throw new Exception(batchResponse.ErrorMessage);
                     }
                 }
             }
@@ -93,7 +94,7 @@ public static class CosmosScripts
 
         var bike = new Bike()
         {
-            BikeType = BikeType.Traditional,
+            BikeType = BikeType.Regular,
             CityId = warsaw.Id,
             StationId = station.Id,
             IsTaken = false,

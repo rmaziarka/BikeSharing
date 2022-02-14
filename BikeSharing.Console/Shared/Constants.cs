@@ -1,6 +1,4 @@
-﻿using Microsoft.Azure.Cosmos.Spatial;
-
-namespace BikeSharing.Console;
+﻿namespace BikeSharing.Console.Shared;
 
 public static class Constants
 {

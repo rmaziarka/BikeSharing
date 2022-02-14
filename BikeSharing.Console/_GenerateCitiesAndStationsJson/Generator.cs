@@ -1,7 +1,9 @@
-﻿using Microsoft.Azure.Cosmos.Spatial;
+﻿using BikeSharing.Console.Shared;
+using BikeSharing.Console.SharedModels;
+using Microsoft.Azure.Cosmos.Spatial;
 using Newtonsoft.Json;
 
-namespace BikeSharing.Console.GenerateCitiesAndStationsJson;
+namespace BikeSharing.Console._GenerateCitiesAndStationsJson;
 
 public class Generator
 {

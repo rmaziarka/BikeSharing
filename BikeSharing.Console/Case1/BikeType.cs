@@ -5,5 +5,5 @@ namespace BikeSharing.Console.Case1;
 
 public enum BikeType
 {
-    Traditional, Electrical
+    Regular, Electrical
 }

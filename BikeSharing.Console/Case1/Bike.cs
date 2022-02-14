@@ -19,4 +19,18 @@ public class Bike
     
     [JsonConverter(typeof(StringEnumConverter))]
     public BikeType BikeType { get; set; }
+    
+    public Owner Owner { get; set; }
+}
+
+public class Owner
+{
+    public Guid Id { get; set; }
+    
+    public OwnerType Type { get; set; }
+}
+
+public enum OwnerType
+{
+    Rental, Reservation
 }

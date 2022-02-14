@@ -1,5 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos.Spatial;
 
+namespace BikeSharing.Console.SharedModels;
+
 public class Station
 {
     public Guid Id { get; set; }
