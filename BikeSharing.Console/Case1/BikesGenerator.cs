@@ -8,10 +8,10 @@ public static class BikesGenerator
 {
     public static string Database = "case1";
 
-    public static string BikeContainerName = "availability";
+    public static string AvailabilityContainerName = "availability";
     public static async Task GenerateBikes(CosmosClient cosmosClient)
     {
-        var bikesContainer = cosmosClient.GetContainer(Database, BikeContainerName);
+        var availabilityContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
 
         var random = new Random();
         var bikeRUCharge = 0.0;
@@ -61,24 +61,21 @@ public static class BikesGenerator
             }
             
             var cityRUCharge = 0.0;
-            foreach (var bikesBatch in bikeAvailabilities.BatchBy(100))
+            
+            // could use TransactionBatch but it is slower
+            List<Task> concurrentTasks = new List<Task>();
+            foreach(var bikeAvailability in bikeAvailabilities)
             {
-                TransactionalBatch batch = bikesContainer.CreateTransactionalBatch(new PartitionKey(city.Id.ToString()));
+                concurrentTasks.Add(availabilityContainer.CreateItemAsync(bikeAvailability,
+                    new PartitionKey(bikeAvailability.CityId.ToString())));
+            }
 
-                foreach (var bike in bikesBatch)
-                {
-                    batch.CreateItem(bike);
-                }
-                TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
-                cityRUCharge += batchResponse.RequestCharge;
-                
-                using (batchResponse)
-                {
-                    if (!batchResponse.IsSuccessStatusCode)
-                    {
-                        throw new Exception(batchResponse.ErrorMessage);
-                    }
-                }
+            await Task.WhenAll(concurrentTasks);
+            
+            foreach (var task in concurrentTasks)
+            {
+                var response = ((Task<ItemResponse<BikeAvailability>>)task).Result;
+                cityRUCharge += response.RequestCharge;
             }
 
             bikeRUCharge += cityRUCharge;
@@ -90,7 +87,7 @@ public static class BikesGenerator
 
     public static async Task GenerateBike(CosmosClient cosmosClient)
     {
-        var bikesContainer = cosmosClient.GetContainer(Database, BikeContainerName);
+        var bikesContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
         var warsaw = StaticLists.Cities.First();
         var station = warsaw.Stations.First();
 

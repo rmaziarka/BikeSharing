@@ -9,7 +9,7 @@ public static class RentalGenerator
     public static string Database = "case1";
     public static string RentalContainerName = "rentals";
     
-    public static async Task GenerateReservationsAndRentals(CosmosClient cosmosClient, DateOnly generationDay)
+    public static async Task GenerateReservationsAndRentals(CosmosClient cosmosClient, DateOnly generationDay, bool allCities = false)
     {
         var rentalsContainer = cosmosClient.GetContainer(Database, RentalContainerName);
 
@@ -41,7 +41,8 @@ public static class RentalGenerator
                         BikeId = random.GetRandomBike(city.Id).Id,
                         StartDate = reservationStartDate,
                         ExpirationDate = expirationDate,
-                        ClientId = clientId
+                        ClientId = clientId,
+                        CityId = city.Id
                     };
 
                     var rentalStartDate = reservationStartDate.AddMinutes(5);
@@ -60,7 +61,8 @@ public static class RentalGenerator
                         {
                             Id = reservation.Id,
                             Type = BasedOnType.Reservation
-                        }
+                        },
+                        CityId = city.Id
                     };
 
                     reservation.Completed = new Completed()
@@ -93,25 +95,27 @@ public static class RentalGenerator
             }
 
             var cityRUCharge = 0.0;
-            foreach (var reservationOrRental in reservationsAndRentals)
-            {
-                var response = rentalsContainer.CreateItemAsync(reservationOrRental,
-                    new PartitionKey(reservationOrRental.ClientId));
             
-                cityRUCharge += response.Result.RequestCharge;
-                
-                using (response)
-                {
-                    if (!response.IsCompletedSuccessfully)
-                    {
-                        throw new Exception(response.Exception?.Message);
-                    }
-                }
+            List<Task> concurrentTasks = new List<Task>();
+            foreach(var reservationOrRental in reservationsAndRentals)
+            {
+                concurrentTasks.Add(rentalsContainer.CreateItemAsync<dynamic>(reservationOrRental,
+                    new PartitionKey(reservationOrRental.ClientId)));
+            }
+
+            await Task.WhenAll(concurrentTasks);
+            
+            foreach (var task in concurrentTasks)
+            {
+                var response = ((Task<ItemResponse<dynamic>>)task).Result;
+                cityRUCharge += response.RequestCharge;
             }
 
             rentalReservationRU += cityRUCharge;
             System.Console.WriteLine($"RU cost for adding rentals to {city.Name} :{cityRUCharge:F2}");
-            System.Console.WriteLine($"Average cost per rental {(cityRUCharge/ numberOfRentals):F2}");
+            System.Console.WriteLine($"Average cost per rental {(cityRUCharge/ (double)numberOfRentals):F2}");
+
+            if (!allCities) return;
         }
         System.Console.WriteLine($"RU cost for adding all bikes to {StaticLists.Cities.Count} cities :{rentalReservationRU:F2}");
     }

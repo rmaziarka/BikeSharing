@@ -9,8 +9,6 @@ public class Reservation: IClientId
 
     public string Type => nameof(Reservation);
     
-    public Guid UserId { get; set; }
-    
     public DateTime StartDate { get; set; }
     
     public DateTime ExpirationDate { get; set; }
@@ -22,6 +20,8 @@ public class Reservation: IClientId
     public string ClientId { get; set; }
 
     public bool IsCompleted => Completed != null;
+    
+    public Guid CityId { get; set; }
 }
 
 public class Completed

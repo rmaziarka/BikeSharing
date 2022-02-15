@@ -27,6 +27,8 @@ public class Owner
 {
     public Guid Id { get; set; }
     
+    public string ClientId { get; set; }
+    
     public OwnerType Type { get; set; }
 }
 

@@ -9,8 +9,6 @@ public class Rental: IClientId
 
     public string Type => nameof(Rental);
     
-    public Guid UserId { get; set; }
-    
     public DateTime StartDate { get; set; }
     
     public DateTime ExpirationDate { get; set; }
@@ -18,11 +16,14 @@ public class Rental: IClientId
     public Guid BikeId { get; set; }
     
     public BasedOn BasedOn { get; set; }
+    
     public string ClientId { get; set; }
     
     public DateTime? CompletedDate { get; set; }
 
     public bool IsCompleted => CompletedDate.HasValue;
+    
+    public Guid CityId { get; set; }
 }
 
 public class BasedOn

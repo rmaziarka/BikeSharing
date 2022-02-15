@@ -11,7 +11,7 @@ availabilityContainerName='availability'
 availabilityPartitionKey='//CityId'
 
 rentalsContainerName='rentals'
-rentalsPartitionKey='//UserId'
+rentalsPartitionKey='//ClientId'
 
 subscriptionId=$(az account show --query id --output tsv)
 
@@ -66,3 +66,15 @@ az monitor diagnostic-settings create \
     --logs "@log-analytics-diagnostic-logs.json" \
     --metrics '[{"category": "Requests","categoryGroup": null,"enabled": true,"retentionPolicy": {"enabled": false,"days": 0}}]' \
     --workspace $workspacePath
+     
+#    "spatialIndexes": [
+#        {
+#            "path": "/*",
+#            "types": [
+#                "Point",
+#                "Polygon",
+#                "MultiPolygon",
+#                "LineString"
+#            ]
+#        }
+#    ],
