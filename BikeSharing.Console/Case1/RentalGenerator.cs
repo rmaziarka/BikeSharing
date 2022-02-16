@@ -85,9 +85,10 @@ public static class RentalGenerator
                         Id = Guid.NewGuid(),
                         BikeId = random.GetRandomBike(city.Id).Id,
                         ClientId = clientId,
+                        CityId = city.Id,
                         StartDate = rentalStartDate,
                         ExpirationDate = rentalExpirationDate,
-                        CompletedDate = rentalCompletedDate
+                        CompletedDate = rentalCompletedDate  
                     };
                     
                     reservationsAndRentals.Add(rental);
@@ -96,19 +97,22 @@ public static class RentalGenerator
 
             var cityRUCharge = 0.0;
             
-            List<Task> concurrentTasks = new List<Task>();
-            foreach(var reservationOrRental in reservationsAndRentals)
+            foreach(var reservationOrRentalBatch in reservationsAndRentals.BatchBy(1000))
             {
-                concurrentTasks.Add(rentalsContainer.CreateItemAsync<dynamic>(reservationOrRental,
-                    new PartitionKey(reservationOrRental.ClientId)));
-            }
+                List<Task> concurrentTasks = new List<Task>();
+                foreach (var reservationOrRental in reservationOrRentalBatch)
+                {
+                    concurrentTasks.Add(rentalsContainer.CreateItemAsync<dynamic>(reservationOrRental,
+                        new PartitionKey(reservationOrRental.ClientId)));
+                }
 
-            await Task.WhenAll(concurrentTasks);
+                await Task.WhenAll(concurrentTasks);
             
-            foreach (var task in concurrentTasks)
-            {
-                var response = ((Task<ItemResponse<dynamic>>)task).Result;
-                cityRUCharge += response.RequestCharge;
+                foreach (var task in concurrentTasks)
+                {
+                    var response = ((Task<ItemResponse<dynamic>>)task).Result;
+                    cityRUCharge += response.RequestCharge;
+                }
             }
 
             rentalReservationRU += cityRUCharge;
