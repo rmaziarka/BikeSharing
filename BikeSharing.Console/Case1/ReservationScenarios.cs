@@ -52,7 +52,7 @@ public static class ReservationScenarios
         var requestCharge = 0.0;
         var availabilityContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
         var rentalsContainer = cosmosClient.GetContainer(Database, RentalContainerName);
-
+        
         var bikeAvailabilityResponse =
             await availabilityContainer.ReadItemAsync<BikeAvailability>(
                 bikeAvailabilityId.ToString(),

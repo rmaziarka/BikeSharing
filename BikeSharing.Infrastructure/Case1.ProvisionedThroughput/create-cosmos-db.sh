@@ -23,14 +23,14 @@ az cosmosdb create \
     -n $accountName \
     -g $resourceGroupName \
     --default-consistency-level Eventual \
-    --locations regionName=$location failoverPriority=0 isZoneRedundant=False \
-    --capabilities EnableServerless
+    --locations regionName=$location failoverPriority=0 isZoneRedundant=False 
 
 # Create a SQL API database
 az cosmosdb sql database create \
     -a $accountName \
     -g $resourceGroupName \
-    -n $databaseName
+    -n $databaseName \
+    --throughput "20000"
 
 # Create a SQL API container
 az cosmosdb sql container create \
@@ -49,7 +49,7 @@ az cosmosdb sql container create \
     -p $rentalsPartitionKey
 
 
-# Create Log Analytics Workspace
+ Create Log Analytics Workspace
 az monitor log-analytics workspace create \
     -g $resourceGroupName \
     -n $workspaceName \
@@ -61,7 +61,7 @@ workspacePath="//subscriptions\\$subscriptionId\\resourcegroups\\$resourceGroupN
 # Connect Log Analytics Workspace to Cosmos DB
 az monitor diagnostic-settings create \
     --resource $resourceName \
-    -n 'Cosmos DB' --debug  \
+    -n 'Cosmos DB' \
     --export-to-resource-specific true \
     --logs "@log-analytics-diagnostic-logs.json" \
     --metrics '[{"category": "Requests","categoryGroup": null,"enabled": true,"retentionPolicy": {"enabled": false,"days": 0}}]' \

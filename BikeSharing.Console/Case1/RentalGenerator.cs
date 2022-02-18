@@ -97,7 +97,7 @@ public static class RentalGenerator
 
             var cityRUCharge = 0.0;
             
-            foreach(var reservationOrRentalBatch in reservationsAndRentals.BatchBy(1000))
+            foreach(var reservationOrRentalBatch in reservationsAndRentals.BatchBy(8000))
             {
                 List<Task> concurrentTasks = new List<Task>();
                 foreach (var reservationOrRental in reservationOrRentalBatch)

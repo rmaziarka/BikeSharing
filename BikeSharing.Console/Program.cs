@@ -1,8 +1,6 @@
 ﻿// The Azure Cosmos DB endpoint for running this sample.
 
 using System.Configuration;
-using System.Security.Principal;
-using BikeSharing.Console.Case1;
 using Microsoft.Azure.Cosmos;
 
 string endpointUri = ConfigurationManager.AppSettings.Get("EndpointUri")!;
@@ -14,9 +12,8 @@ var cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOpt
 
 
 // [GENERATOR]
-// await BikesGenerator.GenerateBikes(cosmosClient);
-
-// await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2022,2,15));
+//await BikesGenerator.GenerateBikes(cosmosClient);
+//await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2022,2,18), true);
 
 
 
@@ -59,6 +56,6 @@ var cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOpt
 // TODO
 
 // Finish rental in station
-var bikeAvailabilityId = Guid.Parse("051c860a-38ee-4edb-bbe3-ba3c48e23685");
-var stationId = Guid.Parse("b68b41db-8f78-4962-955c-0d8e6e5121f8");
-await ReturnScenarios.ReturnBikeInStation(cosmosClient, bikeAvailabilityId, stationId); 
+// var bikeAvailabilityId = Guid.Parse("051c860a-38ee-4edb-bbe3-ba3c48e23685");
+// var stationId = Guid.Parse("b68b41db-8f78-4962-955c-0d8e6e5121f8");
+// await ReturnScenarios.ReturnBikeInStation(cosmosClient, bikeAvailabilityId, stationId); 
