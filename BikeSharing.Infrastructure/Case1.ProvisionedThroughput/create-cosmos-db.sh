@@ -32,21 +32,23 @@ az cosmosdb sql database create \
     -n $databaseName \
     --throughput "20000"
 
-# Create a SQL API container
+# Create Availability container
 az cosmosdb sql container create \
     -a $accountName \
     -g $resourceGroupName \
     -d $databaseName \
     -n $availabilityContainerName \
-    -p $availabilityPartitionKey
+    -p $availabilityPartitionKey \
+    --idx @cosmos-index-policy.json
 
-# Create a SQL API container
+# Create Rental container
 az cosmosdb sql container create \
     -a $accountName \
     -g $resourceGroupName \
     -d $databaseName \
     -n $rentalsContainerName \
-    -p $rentalsPartitionKey
+    -p $rentalsPartitionKey \
+    --idx @cosmos-index-policy.json
 
 
  Create Log Analytics Workspace
@@ -66,15 +68,3 @@ az monitor diagnostic-settings create \
     --logs "@log-analytics-diagnostic-logs.json" \
     --metrics '[{"category": "Requests","categoryGroup": null,"enabled": true,"retentionPolicy": {"enabled": false,"days": 0}}]' \
     --workspace $workspacePath
-     
-#    "spatialIndexes": [
-#        {
-#            "path": "/*",
-#            "types": [
-#                "Point",
-#                "Polygon",
-#                "MultiPolygon",
-#                "LineString"
-#            ]
-#        }
-#    ],

@@ -5,13 +5,13 @@ resourceGroupName="bikesharing-$uniqueId"
 location='westeurope'
 accountName="$resourceGroupName-cosmos"
 workspaceName="$resourceGroupName-workspace"
-databaseName='case1'
+databaseName='case2'
 
 availabilityContainerName='availability'
 availabilityPartitionKey='//CityId'
 
 rentalsContainerName='rentals'
-rentalsPartitionKey='//ClientId'
+rentalsPartitionKey='//CityIdDate'
 
 subscriptionId=$(az account show --query id --output tsv)
 
@@ -32,7 +32,7 @@ az cosmosdb sql database create \
     -g $resourceGroupName \
     -n $databaseName
 
-# Create a SQL API container
+# Create Availability container
 az cosmosdb sql container create \
     -a $accountName \
     -g $resourceGroupName \
@@ -68,3 +68,4 @@ az monitor diagnostic-settings create \
     --logs "@log-analytics-diagnostic-logs.json" \
     --metrics '[{"category": "Requests","categoryGroup": null,"enabled": true,"retentionPolicy": {"enabled": false,"days": 0}}]' \
     --workspace $workspacePath
+     
