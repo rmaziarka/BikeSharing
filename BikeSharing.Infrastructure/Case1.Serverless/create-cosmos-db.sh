@@ -22,7 +22,7 @@ az group create -n $resourceGroupName -l $location
 az cosmosdb create \
     -n $accountName \
     -g $resourceGroupName \
-    --default-consistency-level Eventual \
+    --default-consistency-level Session \
     --locations regionName=$location failoverPriority=0 isZoneRedundant=False \
     --capabilities EnableServerless
 
