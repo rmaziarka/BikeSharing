@@ -32,7 +32,7 @@ az cosmosdb sql database create \
     -g $resourceGroupName \
     -n $databaseName
 
-# Create a SQL API container
+# Create Availability container
 az cosmosdb sql container create \
     -a $accountName \
     -g $resourceGroupName \
