@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeSharing.Console", "BikeSharing.Console\BikeSharing.Console.csproj", "{3892CBD5-A106-405B-9599-4CCD41883DEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeSharing.Exercise", "Exercise\BikeSharing.Exercise.Console\BikeSharing.Exercise.Console.csproj", "{FE635442-492F-4516-B6A7-34ED84052D33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercise", "Exercise", "{F6B56C08-11D1-482F-A0CF-544B333390B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeSharing.Exercise.Functions", "Exercise\BikeSharing.Exercise.Functions\BikeSharing.Exercise.Functions.csproj", "{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeSharing.Exercise.Shared", "Exercise\BikeSharing.Exercise.Shared\BikeSharing.Exercise.Shared.csproj", "{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,22 @@ Global
 		{3892CBD5-A106-405B-9599-4CCD41883DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3892CBD5-A106-405B-9599-4CCD41883DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3892CBD5-A106-405B-9599-4CCD41883DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE635442-492F-4516-B6A7-34ED84052D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE635442-492F-4516-B6A7-34ED84052D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE635442-492F-4516-B6A7-34ED84052D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE635442-492F-4516-B6A7-34ED84052D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE635442-492F-4516-B6A7-34ED84052D33} = {F6B56C08-11D1-482F-A0CF-544B333390B5}
+		{028EAFCD-F19F-48CE-AB0F-7B3C360AEF16} = {F6B56C08-11D1-482F-A0CF-544B333390B5}
+		{6A146D60-3F15-4B1D-8E70-F1AC4D309B9B} = {F6B56C08-11D1-482F-A0CF-544B333390B5}
 	EndGlobalSection
 EndGlobal

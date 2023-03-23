@@ -1,0 +1,16 @@
+﻿using Microsoft.Azure.Cosmos.Spatial;
+namespace BikeSharing.Exercise.Shared.Models;
+
+public class City
+{
+    public Guid Id { get; set; }
+    
+    public int Population { get; set; }
+    
+    public Point Location { get; set; }
+
+    public string Name { get; set; }
+
+    public List<Station> Stations { get; set; } = new List<Station>();
+    public List<Bike> Bikes { get; set; } = new List<Bike>();
+}

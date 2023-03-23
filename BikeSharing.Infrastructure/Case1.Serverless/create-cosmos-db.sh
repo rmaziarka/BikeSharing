@@ -5,7 +5,7 @@ resourceGroupName="bikesharing-$uniqueId"
 location='westeurope'
 accountName="$resourceGroupName-cosmos"
 workspaceName="$resourceGroupName-workspace"
-databaseName='case1'
+databaseName='database'
 
 availabilityContainerName='availability'
 availabilityPartitionKey='//CityId'
@@ -56,6 +56,10 @@ az monitor log-analytics workspace create \
     -g $resourceGroupName \
     -n $workspaceName \
     -l $location
+    
+  
+// write down Azure CLI scripts that will create Azure Functions with serverless plan
+
 
 resourceName="//subscriptions\\$subscriptionId\\resourceGroups\\$resourceGroupName\\providers\\Microsoft.DocumentDb\\databaseAccounts\\$accountName"
 workspacePath="//subscriptions\\$subscriptionId\\resourcegroups\\$resourceGroupName\\providers\\microsoft.operationalinsights\\workspaces\\$workspaceName"
@@ -68,3 +72,4 @@ az monitor diagnostic-settings create \
     --logs "@log-analytics-diagnostic-logs.json" \
     --metrics '[{"category": "Requests","categoryGroup": null,"enabled": true,"retentionPolicy": {"enabled": false,"days": 0}}]' \
     --workspace $workspacePath
+    
