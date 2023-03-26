@@ -1,6 +1,7 @@
 ﻿// The Azure Cosmos DB endpoint for running this sample.
 
 using System.Configuration;
+using BikeSharing.Console.Case1;
 using Microsoft.Azure.Cosmos;
 
 string endpointUri = ConfigurationManager.AppSettings.Get("EndpointUri")!;
@@ -13,7 +14,34 @@ var cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOpt
 
 // [GENERATOR]
 //await BikesGenerator.GenerateBikes(cosmosClient);
-//await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2022,2,18), true);
+
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,27), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,26), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,25), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,24), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,23), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,22), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,21), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,20), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,19), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,18), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,17), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,16), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,15), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,14), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,13), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,12), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,11), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,10), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,9), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,8), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,7), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,6), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,5), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,4), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,3), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,2), true);
+await RentalGenerator.GenerateReservationsAndRentals(cosmosClient, new DateOnly(2023,3,1), true);
 
 
 

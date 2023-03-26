@@ -13,27 +13,29 @@ Guid bikeAvailabilityId = Guid.Parse("c4abcc38-ac80-48c2-904f-02f24b7d9a82"); //
 string connectionString = ConfigurationManager.AppSettings.Get("CosmosDBConnectionSetting")!;
 var cosmosClient = new CosmosClient(connectionString, new CosmosClientOptions(){ AllowBulkExecution = true });
 
+
+
 // [GENERATOR]
-//await BikesGenerator.GenerateBikes(cosmosClient);
-// await ClientsGenerator.GenerateClients(cosmosClient);
+await BikesGenerator.GenerateBikes(cosmosClient);
+await ClientsGenerator.GenerateClients(cosmosClient);
 
 
 
 // [CLIENT SCENARIOS]
 
 // [Get clients from city]
-await ClientScenarios.GetClientsInCity(cosmosClient, cityId);
+// await ClientScenarios.GetClientsInCity(cosmosClient, cityId);
  
 // [Add client]
-var newClientFirstName = "Adam";
-var newClientLastName = "Kowalski";
-var newClientId = Guid.NewGuid();
-await ClientScenarios.AddClient(cosmosClient, cityId, newClientId, newClientFirstName, newClientLastName);
+// var newClientFirstName = "Adam";
+// var newClientLastName = "Kowalski";
+// var newClientId = Guid.NewGuid();
+// await ClientScenarios.AddClient(cosmosClient, cityId, newClientId, newClientFirstName, newClientLastName);
 
  // [Add rental to client]
-var rentalId = Guid.NewGuid();
-var rentalStartDate = DateTime.Now;
-await ClientScenarios.AddRentalToClient(cosmosClient, cityId, clientId,rentalId, rentalStartDate);
+// var rentalId = Guid.NewGuid();
+// var rentalStartDate = DateTime.Now;
+// await ClientScenarios.AddRentalToClient(cosmosClient, cityId, clientId,rentalId, rentalStartDate);
 
 
 
