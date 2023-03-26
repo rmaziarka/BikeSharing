@@ -78,6 +78,6 @@ public static class ClientScenarios
         
         var updateResponse = await clientsContainer.UpsertItemAsync(client);
         
-        System.Console.WriteLine($"[C] AddRentalToClient - {updateResponse:F2} RU");
+        System.Console.WriteLine($"[C] AddRentalToClient - {updateResponse.RequestCharge:F2} RU");
     }
 }

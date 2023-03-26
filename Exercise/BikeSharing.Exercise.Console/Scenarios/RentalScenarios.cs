@@ -1,4 +1,7 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using BikeSharing.Exercise.Shared.Models;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Azure.Cosmos.Spatial;
 
 namespace BikeSharing.Exercise.Console.Scenarios;
 
@@ -41,7 +44,7 @@ public static class RentalScenarios
         // }
 
         
-        //Console.WriteLine($"[C] MakeRentalBasedOnReservation - {requestCharge:F2} RU");
-        //Console.WriteLine($"Created rental {rental.Id} Id");
+        //System.Console.WriteLine($"[C] MakeRentalBasedOnReservation - {requestCharge:F2} RU");
+        //System.Console.WriteLine($"Created rental {rental.Id} Id");
     }
 }

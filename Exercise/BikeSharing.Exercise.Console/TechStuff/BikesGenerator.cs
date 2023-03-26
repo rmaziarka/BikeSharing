@@ -8,7 +8,7 @@ public static class BikesGenerator
     public static string Database = "database";
 
     public static string AvailabilityContainerName = "availability";
-    public static async Task GenerateBikes(CosmosClient cosmosClient)
+    public static async Task GenerateBikes(CosmosClient cosmosClient, bool warsawOnly = true)
     {
         var availabilityContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
 
@@ -80,6 +80,9 @@ public static class BikesGenerator
             bikeRUCharge += cityRUCharge;
             System.Console.WriteLine($"RU cost for adding bikes to {city.Name} :{cityRUCharge:F2}");
             System.Console.WriteLine($"Cost per bike {(cityRUCharge/ numberOfBikes):F2}");
+
+            if(warsawOnly)
+                return;
         }
         System.Console.WriteLine($"RU cost for adding all bikes to {StaticLists.Cities.Count} cities :{bikeRUCharge:F2}");
     }

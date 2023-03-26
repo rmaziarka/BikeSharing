@@ -1,4 +1,6 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using BikeSharing.Exercise.Shared.Models;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Azure.Cosmos.Spatial;
 
 namespace BikeSharing.Exercise.Console.Scenarios;
@@ -16,12 +18,11 @@ public static class ReservationScenarios
         var requestCharge = 0.0;
         var availabilityContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
         
-        // create query
-        // .Where(a => a.Location.Distance(ClientLocation) < 1000)
+        // create query to get bike availability
         
-        // run query to get bikes availability
-
-        // Console.WriteLine($"[Q] GetBikesAround - {bikes.Count} Items, {requestCharge:F2} RU");
+        // retrieve bike availability from db
+        
+        // System.Console.WriteLine($"[Q] GetBikesAround - {bikes.Count} Items, {requestCharge:F2} RU");
 
     }
 
@@ -35,8 +36,8 @@ public static class ReservationScenarios
         
         // create reservation in db
         
-        // Console.WriteLine($"[C] ReserveFreeStandingBike - {requestCharge:F2} RU");
-        // Console.WriteLine($"Created reservation {reservation.Id} Id");
+        // System.Console.WriteLine($"[C] ReserveFreeStandingBike - {requestCharge:F2} RU");
+        // System.Console.WriteLine($"Created reservation {reservation.Id} Id");
     }
 
     
@@ -65,7 +66,7 @@ public static class ReservationScenarios
         
         // create reservation in db
         
-        // Console.WriteLine($"[C] ReserveFreeStandingBike - {requestCharge:F2} RU");
-        // Console.WriteLine($"Created reservation {reservation.Id} Id");
+        // System.Console.WriteLine($"[C] ReserveFreeStandingBike - {requestCharge:F2} RU");
+        // System.Console.WriteLine($"Created reservation {reservation.Id} Id");
     }
 }
