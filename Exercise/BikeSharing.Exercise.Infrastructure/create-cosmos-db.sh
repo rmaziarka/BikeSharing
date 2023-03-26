@@ -1,7 +1,7 @@
 
 # Variables for SQL API resources
 uniqueId=$RANDOM
-resourceGroupName="bikesharing-$uniqueId"
+resourceGroupName="bikesharing-32003"
 location='westeurope'
 accountName="$resourceGroupName-cosmos"
 workspaceName="$resourceGroupName-workspace"
@@ -18,7 +18,7 @@ clientsPartitionKey='//CityId'
 
 subscriptionId=$(az account show --query id --output tsv)
 
-## Create a resource group
+# Create a resource group
 az group create -n $resourceGroupName -l $location
 
 # Create a Cosmos account for SQL API
@@ -29,7 +29,7 @@ az cosmosdb create \
     --locations regionName=$location failoverPriority=0 isZoneRedundant=False \
     --capabilities EnableServerless
 
-# Create a SQL API database
+# Create a NoSQL API database
 az cosmosdb sql database create \
     -a $accountName \
     -g $resourceGroupName \
@@ -58,8 +58,8 @@ az cosmosdb sql container create \
     -a $accountName \
     -g $resourceGroupName \
     -d $databaseName \
-    -n clientsContainerName \
-    -p clientsPartitionKey \
+    -n $clientsContainerName \
+    -p $clientsPartitionKey \
     --idx @cosmos-index-policy.json
 
 # Create Log Analytics Workspace

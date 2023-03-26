@@ -27,4 +27,7 @@
       <HintPath>..\..\..\..\.AzureToolsForIntelliJ\AzureFunctionsCoreTools\v4\4.30.0\Azure.Identity.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BikeSharing.Exercise.Shared\BikeSharing.Exercise.Shared.csproj" />
+  </ItemGroup>
 </Project>

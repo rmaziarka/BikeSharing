@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BikeSharing.Exercise.Shared.Models;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -20,13 +21,12 @@ public static class ClientsFunction
     {
         string connectionString = Environment.GetEnvironmentVariable("CosmosDBConnectionSetting", EnvironmentVariableTarget.Process);
         var cosmosClient = new CosmosClient(connectionString, new CosmosClientOptions(){ AllowBulkExecution = true });
-        _rentalsContainer = cosmosClient.GetContainer("database", "rentals");
-
+        _rentalsContainer = cosmosClient.GetContainer("database", "clients");
     }
     
     [FunctionName("ClientsFunction")]
     public static async Task Run([CosmosDBTrigger(
-        databaseName: "case1",
+        databaseName: "database",
         containerName: "rentals",
         Connection = "CosmosDBConnectionSetting",
         LeaseContainerName = "leases",
@@ -40,43 +40,13 @@ public static class ClientsFunction
             if (type != "Rental") return;
             
             var rental = document.ToObject<Rental>();
+            
+            // retrieve the client from the database
+            
+            // update the client with the new rental
+            
+            // save the client to the database
         }
             
     }
-}
-
-public class Rental
-{
-    [JsonProperty("id")]
-    public Guid Id { get; set; }
-
-    public string Type => nameof(Rental);
-    
-    public DateTime StartDate { get; set; }
-    
-    public DateTime ExpirationDate { get; set; }
-    
-    public Guid BikeId { get; set; }
-    
-    public BasedOn BasedOn { get; set; }
-    
-    public string ClientId { get; set; }
-    
-    public DateTime? CompletedDate { get; set; }
-
-    public bool IsCompleted => CompletedDate.HasValue;
-    
-    public Guid CityId { get; set; }
-}
-
-public class BasedOn
-{
-    public Guid Id { get; set; }
-    
-    public BasedOnType Type { get; set; }
-}
-
-public enum BasedOnType
-{
-    Reservation, AdHoc
 }

@@ -40,22 +40,32 @@ public static class ReservationScenarios
     }
 
     
-    // {
-    //      // retrieve bike availability
-    //
-    //      // create reservation object
-    //     
-    //      // set owner for bike availability
-    //     
-    //      // update bike availability in db
-    // ItemRequestOptions requestOptions = new ItemRequestOptions { IfMatchEtag = firstResponse.ETag };
-    // var updateResponse = await container.UpsertItemAsync(object, requestOptions: requestOptions);
-    // if (updateResponse.StatusCode == HttpStatusCode.PreconditionFailed)
-    // {
-    //     Console.WriteLine("");
-    //     return;
-    // }
+    
+    public static async Task ReserveFreeStandingBike2(CosmosClient cosmosClient, Guid cityId, Guid clientId, Guid bikeAvailabilityId)
+    {
+        var requestCharge = 0.0;
+        var availabilityContainer = cosmosClient.GetContainer(Database, AvailabilityContainerName);
+        var rentalsContainer = cosmosClient.GetContainer(Database, RentalContainerName);
         
-    //      // create reservation in db
-    // }
+        // retrieve bike availability
+        
+        // create reservation object
+        
+        // set owner for bike availability
+        
+        
+        // update bike availability in db
+        // ItemRequestOptions requestOptions = new ItemRequestOptions { IfMatchEtag = firstResponse.ETag };
+        // var updateResponse = await container.UpsertItemAsync(object, requestOptions: requestOptions);
+        // if (updateResponse.StatusCode == HttpStatusCode.PreconditionFailed)
+        // {
+        //     Console.WriteLine("");
+        //     return;
+        // }
+        
+        // create reservation in db
+        
+        // Console.WriteLine($"[C] ReserveFreeStandingBike - {requestCharge:F2} RU");
+        // Console.WriteLine($"Created reservation {reservation.Id} Id");
+    }
 }

@@ -19,8 +19,6 @@ public static class RentalScenarios
 
         // retrieve reservation from db
         
-        // retrieve bike availability from db based on reservation
-        
         // create rental object
         // make reservation completed
         // set rental as owner for bike availability
@@ -43,9 +41,6 @@ public static class RentalScenarios
         // }
 
         
-
-        // update bike availability in db
-
         //Console.WriteLine($"[C] MakeRentalBasedOnReservation - {requestCharge:F2} RU");
         //Console.WriteLine($"Created rental {rental.Id} Id");
     }

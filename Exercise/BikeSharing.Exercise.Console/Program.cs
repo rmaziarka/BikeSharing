@@ -22,18 +22,18 @@ await ClientsGenerator.GenerateClients(cosmosClient);
 // [CLIENT SCENARIOS]
 
 // [Get clients from city]
-await ClientScenarios.GetClientsInCity(cosmosClient, cityId);
+// await ClientScenarios.GetClientsInCity(cosmosClient, cityId);
  
 // [Add client]
-var newClientFirstName = "Adam";
-var newClientLastName = "Kowalski";
-var newClientId = Guid.NewGuid();
-await ClientScenarios.AddClient(cosmosClient, cityId, clientId,newClientFirstName, newClientLastName);
+// var newClientFirstName = "Adam";
+// var newClientLastName = "Kowalski";
+// var newClientId = Guid.NewGuid();
+// await ClientScenarios.AddClient(cosmosClient, cityId, newClientId, newClientFirstName, newClientLastName);
 
  // [Add rental to client]
-var rentalId = Guid.NewGuid();
-var rentalStartDate = DateTime.Now;
-await ClientScenarios.AddRentalToClient(cosmosClient, cityId, clientId,rentalId, rentalStartDate);
+// var rentalId = Guid.NewGuid();
+// var rentalStartDate = DateTime.Now;
+// await ClientScenarios.AddRentalToClient(cosmosClient, cityId, clientId,rentalId, rentalStartDate);
 
 
 
@@ -44,11 +44,12 @@ await ClientScenarios.AddRentalToClient(cosmosClient, cityId, clientId,rentalId,
 
 // [Reserve free standing bike]
 // await ReservationScenarios.ReserveFreeStandingBike(cosmosClient, cityId, clientId, bikeAvailabilityId);
+// await ReservationScenarios.ReserveFreeStandingBike2(cosmosClient, cityId, clientId, bikeAvailabilityId);
 
 
 
 // [RENTAL SCENARIOS]
-var reservationId = Guid.Parse(""); //get previously created reservation
-await RentalScenarios.MakeRentalBasedOnReservation(cosmosClient, cityId, reservationId);
+//var reservationId = Guid.Parse(""); //get previously created reservation
+// await RentalScenarios.MakeRentalBasedOnReservation(cosmosClient, cityId, reservationId);
 
 
