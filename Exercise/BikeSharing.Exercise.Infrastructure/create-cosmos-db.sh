@@ -1,7 +1,7 @@
 
 # Variables for SQL API resources
 uniqueId=$RANDOM
-resourceGroupName="bikesharing-32003"
+resourceGroupName="bikesharing-$uniqueId"
 location='westeurope'
 accountName="$resourceGroupName-cosmos"
 workspaceName="$resourceGroupName-workspace"
